@@ -1,0 +1,17 @@
+import math
+sr=int(input("Enter starting range"))
+er=int(input("Enter ending range"))
+o=0
+e=0
+for i in range(sr,er):
+    a=i%2
+    a=math.floor(a)
+    if(a == 0):
+        e=e+1
+    else:
+        o=o+1
+print("No. of odd digits is ",o)
+print("No. of even digits is ",e)
+
+
+
