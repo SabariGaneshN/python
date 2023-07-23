@@ -1,0 +1,45 @@
+class NegativeAgeError(Exception):
+    def __init__(self, age):
+        super().__init__(f"Age cannot be negative: {age}")
+
+
+def get_positive_age():
+    while True:
+        try:
+            age = int(input("Enter your age: "))
+            if age < 0:
+                raise NegativeAgeError(age)
+            return age
+        except ValueError:
+            print("Invalid input! Please enter a valid integer for age.")
+        except NegativeAgeError as e:
+            print(e)
+
+
+def main():
+    try:
+        name = input("Enter your name: ")
+        age = get_positive_age()
+        marks = []
+
+        for i in range(6):
+            marks.append(float(input(f"Enter subject {i+1} marks: ")))
+
+        student_data = {
+            "Name": name,
+            "Age": age,
+            "Marks": marks
+        }
+
+        print("\nStudent Details:")
+        for key, value in student_data.items():
+            print(f"{key}: {value}")
+
+    except KeyboardInterrupt:
+        print("\nProgram terminated by the user.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+
+if __name__ == "__main__":
+    main()
