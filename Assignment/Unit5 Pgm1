@@ -1,0 +1,10 @@
+def generate_multiples_of_7(limit):
+    multiples_of_7 = []
+    for i in range(1, limit + 1):
+        multiples_of_7.append(7 * i)
+    return multiples_of_7
+
+# Example: Generate multiples of 7 up to 10
+limit = 10
+result = generate_multiples_of_7(limit)
+print(result)
