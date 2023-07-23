@@ -1,0 +1,17 @@
+import numpy as np
+
+def convert_to_3d_array(arr_1d, rows, cols, depth):
+    total_elements = rows * cols * depth
+    if len(arr_1d) != total_elements:
+        raise ValueError(f"1D array length does not match the specified dimensions (expected {total_elements} elements).")
+
+    arr_3d = np.array(arr_1d).reshape((depth, rows, cols))
+    return arr_3d
+
+# Example: Convert a 1D array to a 3D array with 2 rows, 2 columns, and 2 depth
+one_dimensional_array = [1, 2, 3, 4, 5, 6, 7, 8]
+rows = 2
+cols = 2
+depth = 2
+result_3d = convert_to_3d_array(one_dimensional_array, rows, cols, depth)
+print(result_3d)
