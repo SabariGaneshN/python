@@ -1,0 +1,66 @@
+class InvalidMarkError(Exception):
+    def __init__(self, mark):
+        super().__init__(f"Invalid Mark: {mark}. Marks should be between 0 and 100.")
+
+
+def get_marks():
+    marks = []
+    for i in range(6):
+        while True:
+            try:
+                mark = float(input(f"Enter subject {i+1} marks: "))
+                if mark < 0 or mark > 100:
+                    raise InvalidMarkError(mark)
+                marks.append(mark)
+                break
+            except ValueError:
+                print("Invalid input! Please enter a valid floating-point number for marks.")
+            except InvalidMarkError as e:
+                print(e)
+    return marks
+
+
+def calculate_total(marks):
+    return sum(marks)
+
+
+def calculate_average(marks):
+    return sum(marks) / len(marks)
+
+
+def calculate_minimum(marks):
+    return min(marks)
+
+
+def calculate_maximum(marks):
+    return max(marks)
+
+
+def main():
+    try:
+        name = input("Enter your name: ")
+        roll_number = input("Enter your roll number: ")
+        marks = get_marks()
+
+        total = calculate_total(marks)
+        average = calculate_average(marks)
+        minimum = calculate_minimum(marks)
+        maximum = calculate_maximum(marks)
+
+        print("\nStudent Details:")
+        print(f"Name: {name}")
+        print(f"Roll Number: {roll_number}")
+        print(f"Marks: {marks}")
+        print(f"Total Marks: {total}")
+        print(f"Average Marks: {average:.2f}")
+        print(f"Minimum Mark: {minimum}")
+        print(f"Maximum Mark: {maximum}")
+
+    except KeyboardInterrupt:
+        print("\nProgram terminated by the user.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+
+if __name__ == "__main__":
+    main()
